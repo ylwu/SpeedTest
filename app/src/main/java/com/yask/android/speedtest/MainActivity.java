@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
 
                 int bytesRead = 0;
 
-
+                long startTime = System.currentTimeMillis();
                 while (bytesRead < fileLength) {
                     int n = input.read(fileBlob, bytesRead, fileLength - bytesRead);
                     if (n <= 0) {
@@ -102,6 +102,8 @@ public class MainActivity extends ActionBarActivity {
                     bytesRead += n;
                     Log.d("speedTest progress", String.valueOf(bytesRead));
                 }
+                long endTime = System.currentTimeMillis();
+                Log.d("speedTest download time", String.valueOf(endTime-startTime));
                 input.close();
                 return String.valueOf(bytesRead);
             } catch (Exception e) {
